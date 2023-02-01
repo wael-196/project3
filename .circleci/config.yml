@@ -1,5 +1,6 @@
 version: 2.1
 
+#commands
 commands:
   print_pipeline_id:
     description: "A very simple command for demonstration purposes"
@@ -12,6 +13,17 @@ commands:
 
 
 jobs:
+
+  newjob:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
+      - run: 
+          command: echo "wwww"
+          when: on_fail
+
+
   save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
